@@ -70,10 +70,149 @@ namespace Probleme___setul_2
             else
                 Console.WriteLine("Pozitia lui " + a + " este " + poz);
         }
-        static void  p5()
+        static void p5()
         {
             int n = int.Parse(Console.ReadLine());
-
+            int nr = 0;
+            for (int i = 0; i < n; i++)
+            {
+                int x = int.Parse(Console.ReadLine());
+                if (x == i)
+                {
+                    nr++;
+                }
+            }
+            Console.WriteLine(nr);
+        }
+        static void p6()
+        {
+            int n = int.Parse(Console.ReadLine());
+            bool ok = true;
+            int x1 = int.Parse(Console.ReadLine());
+            for (int i=1;i<n;i++)
+            {
+                int x2 = int.Parse(Console.ReadLine());
+                if(x1>x2)
+                    ok = false;
+                x1 = x2;
+            }
+            if (ok)
+                Console.WriteLine($"Numerele sunt in ordine crescatoare");
+            else
+                Console.WriteLine($"Numerele nu sunt in ordine crescatoare");
+        }
+        static void p7()
+        {
+            int n = int.Parse(Console.ReadLine());
+            int min = 0;
+            int max = 0;
+            for (int i = 0; i < n; i++)
+            {
+                int x = int.Parse(Console.ReadLine());
+                if (min == 0)
+                {
+                    min = x;
+                }
+                if (x < min)
+                {
+                    min = x;
+                }
+                if (x > max)
+                {
+                    max = x;
+                }
+            }
+            Console.WriteLine($"Minimul sirului este {min}, iar maximul sirului este {max}");
+        }
+        static void p8()
+        {
+            int n = int.Parse(Console.ReadLine());
+            int f1 = 0;
+            int f2 = 1;
+            int fn = 0;
+            for (int i = 2; i <= n; i++)
+            {
+                fn = f2 + f1;
+                f1 = f2;
+                f2 = fn;
+            }
+            Console.WriteLine($"{fn}");
+        }
+        static void p9()
+        {
+            int n = int.Parse(Console.ReadLine());
+            bool ok = true;
+            bool ok1 = true;
+            int x1 = int.Parse(Console.ReadLine());
+            for (int i = 1; i < n; i++)
+            {
+                int x2 = int.Parse(Console.ReadLine());
+                if (x1 > x2)
+                {
+                    ok = false;
+                }
+                if (x1 < x2)
+                {
+                    ok1 = false;
+                }
+                x1 = x2;
+            }
+            if (ok || ok1)
+                Console.WriteLine($"Sirul este monoton");
+            else
+                Console.WriteLine($"Sirul nu este monoton");
+        }
+        static void p10()
+        {
+            int n = int.Parse(Console.ReadLine());
+            int maxim = 1;
+            int smaxim = 1;
+            int x1 = int.Parse(Console.ReadLine());
+            for (int i = 1; i < n; i++)
+            {
+                int x2 = int.Parse(Console.ReadLine());
+                if (x1 == x2)
+                    maxim++;
+                else
+                    maxim = 1;
+                if (maxim > smaxim)
+                    smaxim = maxim;
+                x1 = x2;
+            }
+            Console.WriteLine($"Numarul maxim de numere consecutive egale este {smaxim}");
+        }
+        static void p11()
+        {
+            int n = int.Parse(Console.ReadLine());
+            int suma = 0;
+            for (int i = 0; i < n; i++)
+            {
+                int x = int.Parse(Console.ReadLine());
+                int xinv = 0;
+                while (x > 0)
+                {
+                    xinv = xinv * 10 + x % 10;
+                    x /= 10;
+                }
+                suma += xinv;
+            }
+            Console.WriteLine(suma);
+        }
+        static void p12()
+        {
+            int n = int.Parse(Console.ReadLine());
+            int nr = 0;
+            int x1 = int.Parse(Console.ReadLine());
+            if (x1 != 0)
+                nr++;
+            for (int i = 1; i < n; i++)
+            {
+                int x2 = int.Parse(Console.ReadLine());
+                if (x2 != 0 && x1 == 0)
+                    nr++;
+                x1 = x2;
+            }
+            Console.WriteLine(nr);
         }
         static void Main(string[] args)
         {
@@ -103,42 +242,42 @@ namespace Probleme___setul_2
                 if (nrp == 5)
                 {
                     Console.WriteLine("Problema " + nrp);
-                    //p5();
+                    p5();
                 }
                 if (nrp == 6)
                 {
                     Console.WriteLine("Problema " + nrp);
-                    //p6();
+                    p6();
                 }
                 if (nrp == 7)
                 {
                     Console.WriteLine("Problema " + nrp);
-                    //p7();
+                    p7();
                 }
                 if (nrp == 8)
                 {
                     Console.WriteLine("Problema " + nrp);
-                    //p8();
+                    p8();
                 }
                 if (nrp == 9)
                 {
                     Console.WriteLine("Problema " + nrp);
-                    //p9();
+                    p9();
                 }
                 if (nrp == 10)
                 {
                     Console.WriteLine("Problema " + nrp);
-                    //p10();
+                    p10();
                 }
                 if (nrp == 11)
                 {
                     Console.WriteLine("Problema " + nrp);
-                    //p11();
+                    p11();
                 }
                 if (nrp == 12)
                 {
                     Console.WriteLine("Problema " + nrp);
-                    //p12();
+                    p12();
                 }
                 if (nrp == 13)
                 {
