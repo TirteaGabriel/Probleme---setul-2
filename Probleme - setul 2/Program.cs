@@ -214,6 +214,193 @@ namespace Probleme___setul_2
             }
             Console.WriteLine(nr);
         }
+        static void p13()
+        {
+            int n = int.Parse(Console.ReadLine());
+            int x1 = int.Parse(Console.ReadLine());
+            int prim = x1;
+            int bec = 0;
+            for (int i = 1; i < n; i++)
+            {
+                int x2 = int.Parse(Console.ReadLine());
+                if (x1 > x2)
+                {
+                    bec++;
+                }
+                x1 = x2;
+            }
+            if (bec == 1 && prim > x1)
+            {
+                Console.WriteLine($"Secventa este crescatoare rotita");
+            }
+            else Console.WriteLine($"Secventa nu este crescatoare rotita");
+        }
+        static void p14()
+        {
+            int n = int.Parse(Console.ReadLine());
+            int x1 = int.Parse(Console.ReadLine());
+            int prim = x1;
+            int bec1 = 0;
+            int bec2 = 0;
+            for (int i = 1; i < n; i++)
+            {
+                int x2 = int.Parse(Console.ReadLine());
+                if (x1 > x2)
+                {
+                    bec1++;
+                }
+                if (x1 < x2)
+                {
+                    bec2++;
+                }
+                x1 = x2;
+            }
+            if ((bec1 == 1 && prim > x1) ^ (bec2 == 1 && prim < x1))
+            {
+                Console.WriteLine($"Secventa este monotona rotita");
+            }
+            else Console.WriteLine($"Secventa nu este monotona rotita");
+        }
+        static void p15()
+        {
+            int n, x, y;
+            bool? crescator = null;
+            bool ok = true, switched = false;
+            n = int.Parse(Console.ReadLine());
+            x = int.Parse(Console.ReadLine());
+            for (int i = 1; i < n; i++)
+            {
+                y = int.Parse(Console.ReadLine());
+                if (x < y)
+                {
+                    if (!crescator.HasValue)
+                    {
+                        crescator = true;
+                    }
+                    else if (!crescator.Value && !switched)
+                    {
+                        switched = true;
+                        crescator = true;
+                    }
+                    else if (!crescator.Value && switched)
+                    {
+                        ok = false;
+                    }
+                }
+                if (x > y)
+                {
+                    if (!crescator.HasValue)
+                    {
+                        crescator = false;
+                    }
+                    else if (crescator.Value && !switched)
+                    {
+                        switched = true;
+                        crescator = false;
+                    }
+                    else if (crescator.Value && switched)
+                    {
+                        ok = false;
+                    }
+                }
+                x = y;
+            }
+            if (ok && switched == true)
+            {
+                Console.WriteLine("Secventa este bitonica");
+            }
+            else
+            {
+                Console.WriteLine("Secventa nu este bitonica");
+            }
+        }
+
+        static void p16()
+        {
+            int n = int.Parse(Console.ReadLine());
+            int x1 = int.Parse(Console.ReadLine());
+            bool? crescator = null;
+            bool ok = true, switched = false;
+            int prim = x1;
+            int bec1 = 0;
+            int bec2 = 0;
+            for (int i = 1; i < n; i++)
+            {
+                int x2 = int.Parse(Console.ReadLine());
+                if (x1 > x2)
+                {
+                    bec1++;
+                }
+                if (x1 < x2)
+                {
+                    bec2++;
+                }
+                x1 = x2;
+                if (x1 < x2)
+                {
+                    if (!crescator.HasValue)
+                    {
+                        crescator = true;
+                    }
+                    else if (!crescator.Value && !switched)
+                    {
+                        switched = true;
+                        crescator = true;
+                    }
+                    else if (!crescator.Value && switched)
+                    {
+                        ok = false;
+                    }
+                }
+                if (x1 > x2)
+                {
+                    if (!crescator.HasValue)
+                    {
+                        crescator = false;
+                    }
+                    else if (crescator.Value && !switched)
+                    {
+                        switched = true;
+                        crescator = false;
+                    }
+                    else if (crescator.Value && switched)
+                    {
+                        ok = false;
+                    }
+                }
+                x1 = x2;
+            }
+            if ((bec1 == 1 && prim > x1) ^ (bec2 == 1 && prim < x1) && ok && switched == true)
+            {
+                Console.WriteLine($"Secventa este bitonica rotita");
+            }
+            else
+                Console.WriteLine($"Secventa nu este bitonica rotita");
+        }
+        static void p17()
+        {
+            string[] t = Console.ReadLine().Split(' ');
+            int zero = 0;
+            int unu = 0;
+            int a = 0;
+            for (int i = 0; i < t.Length; i++)
+            {
+                a = int.Parse(t[i]);
+                if (a == 0)
+                {
+                    zero++;
+                }
+                if (a == 1)
+                {
+                    unu++;
+                    if (i == 0) { break; }
+                }
+            }
+            if (unu == zero && a != 0)
+                Console.WriteLine($"Secventa este corecta");
+            else
+                Console.WriteLine($"Secventa este incorecta");
+        }
         static void Main(string[] args)
         {
             {
@@ -282,27 +469,27 @@ namespace Probleme___setul_2
                 if (nrp == 13)
                 {
                     Console.WriteLine("Problema " + nrp);
-                    //p13();
+                    p13();
                 }
                 if (nrp == 14)
                 {
                     Console.WriteLine("Problema " + nrp);
-                    //p14();
+                    p14();
                 }
                 if (nrp == 15)
                 {
                     Console.WriteLine("Problema " + nrp);
-                    //p15();
+                    p15();
                 }
                 if (nrp == 16)
                 {
                     Console.WriteLine("Problema " + nrp);
-                    //p16();
+                    p16();
                 }
                 if (nrp == 17)
                 {
                     Console.WriteLine("Problema " + nrp);
-                    //p17();
+                    p17();
                 }
                 Console.ReadKey();
             }
