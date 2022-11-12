@@ -383,21 +383,28 @@ namespace Probleme___setul_2
             int zero = 0;
             int unu = 0;
             int a = 0;
+            int incuibare = 0;
+            int incuibaremax = 0;
             for (int i = 0; i < t.Length; i++)
             {
                 a = int.Parse(t[i]);
                 if (a == 0)
                 {
                     zero++;
+                    incuibare++;
                 }
                 if (a == 1)
                 {
                     unu++;
-                    if (i == 0) { break; }
+                    incuibare = 0;
                 }
+                if (incuibare > incuibaremax)
+                    incuibaremax = incuibare;
             }
-            if (unu == zero && a != 0)
-                Console.WriteLine($"Secventa este corecta");
+            if (t[0] == "1" || t[t.Length-1] == "0")
+                Console.WriteLine($"Secventa este incorecta");
+            else if (unu == zero && a != 0)
+                Console.WriteLine($"Secventa este corecta si incuibarea maxima este {incuibaremax}");
             else
                 Console.WriteLine($"Secventa este incorecta");
         }
@@ -490,6 +497,7 @@ namespace Probleme___setul_2
                 {
                     Console.WriteLine("Problema " + nrp);
                     p17();
+                    //()(()())
                 }
                 Console.ReadKey();
             }
