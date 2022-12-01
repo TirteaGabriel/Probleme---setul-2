@@ -318,25 +318,31 @@ namespace Probleme___setul_2
         static void p16()
         {
             int n = int.Parse(Console.ReadLine());
-            int x1 = int.Parse(Console.ReadLine());
+            int x = int.Parse(Console.ReadLine());
             bool? crescator = null;
             bool ok = true, switched = false;
-            int prim = x1;
-            int bec1 = 0;
-            int bec2 = 0;
+            int first = x, y, counter = 0;
             for (int i = 1; i < n; i++)
             {
-                int x2 = int.Parse(Console.ReadLine());
-                if (x1 > x2)
+                y = int.Parse(Console.ReadLine());
+                if (x > y)
                 {
-                    bec1++;
+                    if (!crescator.HasValue)
+                    {
+                        crescator = false;
+                    }
+                    else if (crescator.Value && !switched)
+                    {
+                        switched = true;
+                        crescator = false;
+                        counter++;
+                    }
+                    else if (crescator.Value && switched && counter > 1)
+                    {
+                        ok = false;
+                    }
                 }
-                if (x1 < x2)
-                {
-                    bec2++;
-                }
-                x1 = x2;
-                if (x1 < x2)
+                else if (x < y)
                 {
                     if (!crescator.HasValue)
                     {
@@ -352,30 +358,13 @@ namespace Probleme___setul_2
                         ok = false;
                     }
                 }
-                if (x1 > x2)
-                {
-                    if (!crescator.HasValue)
-                    {
-                        crescator = false;
-                    }
-                    else if (crescator.Value && !switched)
-                    {
-                        switched = true;
-                        crescator = false;
-                    }
-                    else if (crescator.Value && switched)
-                    {
-                        ok = false;
-                    }
-                }
-                x1 = x2;
+
+                x = y;
             }
-            if ((bec1 == 1 && prim > x1) ^ (bec2 == 1 && prim < x1) && ok && switched == true)
-            {
-                Console.WriteLine($"Secventa este bitonica rotita");
-            }
+            if (ok && switched == true && first <= x)
+                Console.WriteLine("Secventa este bitonica rotita");
             else
-                Console.WriteLine($"Secventa nu este bitonica rotita");
+                Console.WriteLine("Secventa nu este bitonica rotita");
         }
         static void p17()
         {
